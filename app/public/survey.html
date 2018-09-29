@@ -176,23 +176,23 @@
     $("#submit").on("click", function () {
 
 
-        function validateForm() {
-            var isValid = true;
-            $(".form-control").each(function () {
-                if ($(this).val() === "") {
-                    isValid = false;
-                }
-            });
+        // function validateForm() {
+        //     var isValid = true;
+        //     $(".form-control").each(function () {
+        //         if ($(this).val() === "") {
+        //             isValid = false;
+        //         }
+        //     });
 
-            $(".chosen-select").each(function () {
-                if ($(this).val() === "") {
-                    isValid = false;
-                }
-            });
-            return isValid;
-        }
+        //     $(".chosen-select").each(function () {
+        //         if ($(this).val() === "") {
+        //             isValid = false;
+        //         }
+        //     });
+        //     return isValid;
+        // }
 
-        if (validateForm()) {
+        // if (validateForm()) {
 
             var userData = {
                 name: $("#name").val().trim(),
@@ -218,9 +218,11 @@
             $.post("/api/friends", userData, function (data) {
                 alert("Searching");
             });
-        }
+        // }
 
     });
+
+    $("#submit").on("click", userData);
 </script>
 
 </html>

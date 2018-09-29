@@ -35,7 +35,7 @@ module.exports = function (app) {
             }
         }
     }
-    friends.push(userData);
+    friends.push(req.body);
     res.json(bestMatch);
 
 });
