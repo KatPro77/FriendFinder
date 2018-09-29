@@ -159,7 +159,8 @@
             <span aria-hidden="true"></span> Submit</button>
 
 
-
+        <br>
+        <br>
 
         <!-- Home page footer -->
         <footer class="footer">
@@ -212,10 +213,10 @@
 
             console.log(userData);
 
-            var currentURL = window.location.origin;
+            // var currentURL = window.location.origin;
 
-            $.post(currentURL + "/api/friends", userData, function (data) {
-                alert("Searching for your new best friend!");
+            $.post("/api/friends", userData, function (data) {
+                alert("Searching");
             });
         }
 
