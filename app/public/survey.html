@@ -11,6 +11,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <link rel-"stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 </head>
 
@@ -169,9 +171,46 @@
             </p>
         </footer>
     </div>
+
+    <div id="resultsModal" class="modal fade"  role="dialog">
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h2 class="modal-title"><strong>Best Match</strong></h2>
+            </div>
+
+            <div class="modal-body">
+              <h2 id="matchName"></h2>
+              <img id="matchingImg" src="https://i.pinimg.com/736x/d4/8a/d4/d48ad49f68a05063a801c7002c636447.jpg" alt="">
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 
 <script type="text/javascript">
+
+    // //Chose CSS
+    // var config = {
+    //     ".chosen-select": {},
+    //     ".chosen-select-deselcet": { allow_single_deselect: true},
+    //     ".chosen-select-no-single": { disable_search_threshold: 10},
+    //     ".chosen-select-no-results": { no_results_text: "Sorry, no match..."},
+    //     ".chosen-select-width": {width: "90%"0}
+    // };
+
+    // for (var selector in config) {
+    //     $(selector).chosen(config[selector]);
+    // }
 
     $("#submit").on("click", function (event) {
         event.preventDefault();
@@ -213,10 +252,13 @@
 
         console.log(userData);
 
-        // var currentURL = window.location.origin;
+        var currentURL = window.location.origin;
 
         $.post("/api/friends", userData, function (data) {
-            alert("Searching");
+
+            $("#matchName").text(data.name);
+            $("#matchImg").text(data.photo);
+            $("#resultsModal").modal("toggle");
         });
         }
 
